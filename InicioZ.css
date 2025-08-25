@@ -1,0 +1,96 @@
+body{
+    
+    background-image: url("../imagenes/fondo2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment: fixed; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+input {
+    margin-bottom: 20%;
+    border-radius: 10px;
+}
+
+.Principal{
+    position: absolute;
+    margin-top: 12%;
+    left: 10%;
+    backdrop-filter: blur(20px); 
+    background-color: transparent; 
+    padding: 100px; 
+    border-radius: 10px; 
+}
+
+#clave{
+    position: absolute;
+    border-bottom: 2px, solid grey;
+    font-size: 16px;
+border: none;
+background: none;
+outline: none;
+}
+
+#nombre{
+border-bottom: 2px, solid grey;
+    font-size: 16px;
+border: none;
+background: none;
+outline: none;
+}
+
+#Registrar{
+    position: absolute;
+    margin-top: 35%;
+    left: 20%;
+    font-size: 16px;
+}
+
+#Registro{
+    position: absolute;
+    left: 18%;
+    margin-top: -40%;
+    color: #a5a19b;
+    
+}
+
+#Logo{
+    position: absolute;
+    margin-top: 5%;
+    left: 60%;
+    height: 80%;
+
+}
+
+input[type="submit"]{
+    width: 10%;
+    height: 40px;
+    border: 1px solid;
+    background: #cecece;
+    border-radius: 25px;
+    font-size: 18px;
+    color: rgb(19, 18, 18);
+    
+}
+input[type="submit"]:hover{
+    background-color:grey;
+    transition: .5s;
+}
+
+
+#nombre, #clave {
+    color: #969696; 
+    font-size: 16px;
+    border: 2px solid transparent;
+    background: none;
+    outline: none;
+    padding: 8px;
+    transition: border-color 0.3s ease;
+}
+
+
+#nombre:focus, #clave:focus {
+    border-color: #969696; 
+    color: #969696; 
+}

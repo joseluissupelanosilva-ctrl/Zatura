@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --color-bg: #0a0a1a;
+    --color-container: rgba(12, 12, 35, 0.92);
+    --color-text: #e0e0f0;
+    --color-accent: #7c86ff;
+    --color-accent-dark: #5763d4;
+    --color-secondary: #ff6b8b;
+    --color-tertiary: #6bffc8;
+    --color-inactive: #4a4a7daa;
+    --color-border: #3c3c78;
+    --color-star: #ffffff;
+    --color-event-indicator: #d0d0ff;
+    --color-title-glow: rgba(124, 134, 255, 0.7);
+    --color-header-bg: rgba(10, 10, 15, 0.9);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Video de fondo y agujero negro */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.agujero-negro {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.nave {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    top: 60%;
+    left: 40%;
+    transition: all 0.1s linear;
+}
+
+.mensaje {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    z-index: 10;
+}
+
+/* --- ESTILOS DEL MENÚ DE NAVEGACIÓN (UNIFICADOS) --- */
+.header {
+    pointer-events: none; /* Permite que los clics pasen a través del header */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1000;
+    background: var(--color-header-bg);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-btn {
+    pointer-events: auto; /* Restaura la interacción para el botón */
+    cursor: pointer;
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1100;
+    width: 60px;
+    height: 60px;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.menu-btn:hover img {
+    transform: scale(0.9);
+    filter: drop-shadow(1px 1px 3px #5a9cf8);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo h1 {
+    background: linear-gradient(45deg, #5a9cf8, #8e44ad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin: 0;
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-links {
+    pointer-events: none; /* No se puede interactuar si el menú está cerrado */
+    position: fixed;
+    left: -100%;
+    top: 80px;
+    height: calc(100vh - 80px);
+    width: 85%;
+    max-width: 320px;
+    background: linear-gradient(45deg, rgba(0, 102, 130, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 23, 30, 1) 75%, rgba(0, 102, 130, 1) 100%);
+    transition: left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 999;
+    padding: 1.5rem 0;
+    overflow-y: auto;
+    border-right: 1px solid rgba(61, 47, 0, 0.2);
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-links.active {
+    pointer-events: auto; /* Se puede interactuar cuando el menú está abierto */
+    left: 0;
+    box-shadow: 5px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-links ul {
+    pointer-events: auto;
+    list-style: none;
+    padding: 0 1rem;
+    margin: 0;
+}
+
+.nav-links li {
+    margin-bottom: 0.1rem;
+    background-color: transparent;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #d0d0d0;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-links a:hover {
+    color: #5a9cf8;
+    transform: translateX(5px);
+}
+    
+.nav-links li:hover {
+    background-color: rgba(10, 10, 10, 0.6);
+}
+
+.overlay {
+    pointer-events: none; /* No se puede interactuar si no está activo */
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.overlay.active {
+    pointer-events: auto; /* Se puede interactuar cuando está activo */
+    display: block;
+    opacity: 1;
+}
+
+ion-icon {
+    color: #8ed2ff;
+    transition: all 0.3s ease;
+    font-size: 1.4rem;
+    min-width: 24px;
+}
+
+.nav-links a:hover ion-icon {
+    color: #5a9cf8;
+    transform: scale(1.1);
+}
+
+body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 45px;
+    }
+    .logo h1 {
+        font-size: 1.6rem;
+    }
+    .menu-btn {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+/* Estilos para los botones de control (audio y tema) */
+.audio-controls, .theme-toggle {
+    pointer-events: auto; /* Asegurar que los botones sean clicables */
+    position: fixed;
+    bottom: 20px;
+    z-index: 100;
+}
+
+.audio-controls {
+    left: 20px;
+}
+
+.theme-toggle {
+    right: 20px;
+}
+
+.audio-btn, .theme-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(30, 30, 50, 0.8);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(124, 134, 255, 0.3);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.audio-btn:hover, .theme-btn:hover {
+    background-color: rgba(124, 134, 255, 0.2);
+    border-color: var(--color-accent);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.audio-btn:active, .theme-btn:active {
+    transform: scale(0.95);
+}

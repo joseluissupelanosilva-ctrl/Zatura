@@ -1,0 +1,141 @@
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url("../imagenes/Eventos4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment: fixed; 
+}
+.mi-boton {
+    font-family: inherit;
+    position: relative;
+    top: 150px;
+    margin-bottom: 20px;
+    background-color: #969696;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    display: block;
+  }
+  .mi-boton:hover {
+    background-color: #525050;
+  }
+
+#Principal{
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 0;
+    color: white;
+    
+}
+
+
+.content {
+    position: absolute;
+    color: white;
+    text-align: center;
+    z-index: 1;
+    margin-top: 250px;
+    left: 50px;
+    width: 50%;
+}
+
+
+
+/* Estilos para el menú de selección de tema */
+.menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+}
+
+/* Estilo moderno para el botón de explorar temas */
+.menu button {
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: rgb(32, 32, 32);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.menu button:hover {
+    background-color: gray;
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Opciones de tema */
+.theme-options {
+    display: none;
+    margin-top: 10px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.theme-options button {
+    display: block;
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.theme-options button:hover {
+    background-color: #555;
+}
+
+
+.container {
+    position: absolute;
+    display: inline-block;
+    right: 89%;
+    top: 10px;
+    
+}
+.image {
+    width: 150px;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+.image.shrink {
+    transform: scale(0.8);
+}
+.menu {
+    display: none;
+    margin-top: 150px;
+}
+.menu button {
+    display: block;
+    margin: 5px;
+    padding: 10px;
+    background-color: #555;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.menu button:hover {
+    background-color: #777;
+}
+
+.theme-options {
+    display: none;
+    margin-top: 10px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

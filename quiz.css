@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Estilos existentes de quiz.css */
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #000000, #1a0f33);
+    color: #e0e0e0;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden; 
+}
+
+.game-container {
+    background-color: rgba(15, 25, 40, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(0, 200, 255, 0.4);
+    padding: 30px;
+    text-align: center;
+    max-width: 90%;
+    width: 900px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    z-index: 10; /* Le damos un z-index para que esté por encima del fondo, pero no del menú */
+    margin-top: 80px; /* Para dejar espacio al menú superior */
+}
+
+h1 {
+    color: #a0d8ff;
+    margin-bottom: 25px;
+    font-size: 2.8em;
+    text-shadow: 0 0 12px rgba(160, 216, 255, 0.8);
+}
+
+.quiz-area {
+    margin-bottom: 25px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#celestialImage {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    object-fit: contain;
+    background-color: #000;
+    padding: 5px;
+}
+
+.feedback-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.feedback-text.correct {
+    color: #4CAF50;
+}
+
+.feedback-text.incorrect {
+    color: #F44336;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.option-button {
+    background-color: #334466;
+    color: white;
+    border: 2px solid #556688;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.option-button:hover {
+    background-color: #445577;
+    border-color: #7788aa;
+    transform: translateY(-3px);
+}
+
+.option-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.option-button.correct-answer {
+    background-color: #28a745;
+    border-color: #218838;
+}
+
+.option-button.incorrect-answer {
+    background-color: #dc3545;
+    border-color: #c82333;
+}
+
+.control-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0 10px;
+}
+
+.control-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.control-button:active {
+    transform: translateY(0);
+}
+
+.score-text {
+    font-size: 1.3em;
+    margin-top: 25px;
+    color: #bbbbbb;
+}
+
+.score-text span {
+    color: #00ffcc;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- ESTILOS DEL MENÚ --- */
+.header {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1000;
+    background: var(--color-header-bg);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-btn {
+    pointer-events: auto;
+    cursor: pointer;
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1100;
+    width: 60px;
+    height: 60px;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.menu-btn:hover img {
+    transform: scale(0.9);
+    filter: drop-shadow(1px 1px 3px #5a9cf8);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo h1 {
+    background: linear-gradient(45deg, #5a9cf8, #8e44ad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin: 0;
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-links {
+    pointer-events: none;
+    position: fixed;
+    left: -100%;
+    top: 80px;
+    height: calc(100vh - 80px);
+    width: 85%;
+    max-width: 320px;
+    background: linear-gradient(45deg, rgba(0, 102, 130, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 23, 30, 1) 75%, rgba(0, 102, 130, 1) 100%);
+    transition: left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 999;
+    padding: 1.5rem 0;
+    overflow-y: auto;
+    border-right: 1px solid rgba(61, 47, 0, 0.2);
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-links.active {
+    pointer-events: auto;
+    left: 0;
+    box-shadow: 5px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-links ul {
+    pointer-events: auto;
+    list-style: none;
+    padding: 0 1rem;
+    margin: 0;
+}
+
+.nav-links li {
+    margin-bottom: 0.1rem;
+    background-color: transparent;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #d0d0d0;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-links a:hover {
+    color: #5a9cf8;
+    transform: translateX(5px);
+}
+    
+.nav-links li:hover {
+    background-color: rgba(10, 10, 10, 0.6);
+}
+
+.overlay {
+    pointer-events: none;
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.overlay.active {
+    pointer-events: auto;
+    display: block;
+    opacity: 1;
+}
+
+ion-icon {
+    color: #8ed2ff;
+    transition: all 0.3s ease;
+    font-size: 1.4rem;
+    min-width: 24px;
+}
+
+.nav-links a:hover ion-icon {
+    color: #5a9cf8;
+    transform: scale(1.1);
+}
+
+body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 45px;
+    }
+    .logo h1 {
+        font-size: 1.6rem;
+    }
+    .menu-btn {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+.audio-controls, .theme-toggle {
+    pointer-events: auto;
+    position: fixed;
+    bottom: 20px;
+    z-index: 100;
+}
+
+.audio-controls {
+    left: 20px;
+}
+
+.theme-toggle {
+    right: 20px;
+}
+
+.audio-btn, .theme-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(30, 30, 50, 0.8);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(124, 134, 255, 0.3);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.audio-btn:hover, .theme-btn:hover {
+    background-color: rgba(124, 134, 255, 0.2);
+    border-color: var(--color-accent);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.audio-btn:active, .theme-btn:active {
+    transform: scale(0.95);
+}
+
+/* --- Añade este código al final de tu archivo quiz.css --- */
+body.menu-open .header {
+    background: rgba(10, 10, 15, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.menu-open .menu-btn {
+    background-color: transparent;
+    border: none;
+}
+
+body.light-theme .header {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .logo h1 {
+    background: linear-gradient(45deg, #0056b3, #001f4d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}

@@ -1,0 +1,90 @@
+body {
+    background-image: url('imagenes/fondo2.jpg');
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.profile-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    position: relative; /* Es crucial para posicionar elementos internos de forma absoluta */
+    top: 50px; /* Ajusta la posición vertical de la tarjeta completa si es necesario */
+}
+
+.profile-image-container {
+    position: relative; /* Necesario para que el botón se posicione en relación a este contenedor */
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin: -70px auto 20px auto; /* Mueve el contenedor hacia arriba y lo centra */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Asegura que la imagen no se salga del círculo */
+    border: 4px solid #fff; /* Borde blanco alrededor de la imagen */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.profile-image {
+    width: 100%; /* La imagen ocupa todo el contenedor */
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen para que cubra el área sin distorsionarse */
+    border-radius: 50%; /* Para mantener la forma circular de la imagen dentro del contenedor */
+}
+
+.upload-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px; /* Botón más redondeado */
+    cursor: pointer;
+    display: inline-flex; /* Para alinear el ícono y el texto */
+    align-items: center;
+    gap: 8px; /* Espacio entre el ícono y el texto */
+    transition: background-color 0.3s ease;
+
+    /* Posicionamiento del botón fuera del círculo */
+    position: absolute; /* Posiciona el botón en relación a .profile-image-container */
+    top: 100%; /* Coloca el botón justo debajo del contenedor de la imagen */
+    left: 50%; /* Lo alinea al centro horizontal del contenedor */
+    transform: translateX(-50%); /* Ajusta el botón para que su propio centro esté en el 50% */
+    margin-top: 5px; /* Pequeño espacio entre el círculo y el botón */
+}
+
+.upload-button:hover {
+    background-color: #0056b3;
+}
+
+.profile-title {
+    color: #888;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.profile-contact, .profile-social {
+    margin-top: 20px;
+}
+
+.social-link {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.social-link:hover {
+    background-color: #0056b3;
+}

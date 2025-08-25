@@ -1,0 +1,86 @@
+.videito{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+body{
+    overflow: hidden;
+}
+
+.LogoPantallaDeCarga{
+    width: 10%;
+    height: 5%;
+}
+
+.infinito{
+    position: absolute;
+    top: 40%;
+left: 41%;
+    width: 20%;
+    height: 32%;
+  
+}
+
+
+.carga {
+    position: fixed;
+    top: 35%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h2{
+    color: aliceblue;
+}
+.carga-contenido {
+    background-color: #7a06c700;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.barra-progreso {
+    width: 100%;
+    height: 8px;
+    background-color: #05040400;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.barra-progreso::before {
+    content: "";
+    width: 0%;
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 10px;
+}
+@media (max-width: 770px) {
+    body{
+        overflow: scroll;
+    }
+
+    .infinito{
+        position: absolute;
+        top: 85%;
+    right: 45%;
+        width: 10%;
+        height: 22%;
+    
+    
+    }
+
+    .LogoPantallaDeCarga{
+        width: 30%;
+        height: 15%;
+    }
+
+
+}

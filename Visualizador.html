@@ -1,0 +1,137 @@
+<!DOCTYPE html> 
+ <html> 
+ <head> 
+     <link rel="stylesheet" href="css/visualizador.css"> 
+     <meta charset="utf-8" /> 
+     <title>Visualizador Planetario</title> 
+ </head> 
+ <body> 
+     <div id="sun-info-popup"> 
+         <button id="close-popup">X</button> 
+         <h2>El Sol</h2> 
+         <p>El Sol es la estrella central de nuestro sistema solar. Es una esfera casi perfecta de plasma caliente, con movimiento convectivo interno que genera un campo magnético. Con un diámetro de aproximadamente 1.4 millones de kilómetros, contiene el 99.86% de la masa del sistema solar.</p> 
+         <p><strong>Características principales:</strong></p> 
+         <ul> 
+             <li>Temperatura superficial: ~5,500°C</li> 
+             <li>Temperatura del núcleo: ~15 millones°C</li> 
+             <li>Edad: ~4.6 billones de años</li> 
+             <li>Composición: 74% hidrógeno, 24% helio, 2% elementos pesados</li> 
+         </ul> 
+     </div> 
+
+      <div id="earth-info-popup"> 
+     <button id="close-earth-popup">X</button> 
+     <h2>La Tierra</h2> 
+     <p>La Tierra es nuestro hogar y el único planeta conocido que alberga vida. 
+        Es el tercer planeta desde el Sol y el más denso del sistema solar.</p> 
+     <p><strong>Características principales:</strong></p> 
+     <ul> 
+         <li>Diámetro: 12,742 km</li> 
+         <li>Edad: ~4.54 billones de años</li> 
+         <li>Satélite natural: La Luna</li> 
+         <li>Composición: 71% agua, 29% tierra</li> 
+         <li>Población humana: ~8 billones</li> 
+     </ul> 
+ </div> 
+
+
+ <div id="jupiter-info-popup"> 
+         <button id="close-jupiter-popup">X</button> 
+         <h2>Jupiter</h2> 
+         <p>Júpiter es el planeta más grande de nuestro sistema solar,  
+           un gigante gaseoso compuesto principalmente de hidrógeno y helio. No tiene una superficie sólida, 
+            pero sí una atmósfera con  bandas de nubes y la icónica Gran Mancha Roja, una tormenta gigante. 
+             Gira rápidamente y tiene más de 90 lunas conocidas.</p> 
+         <p><strong>Características principales:</strong></p> 
+         <ul> 
+             <li>Temperatura superficial: ~5,500°C</li> 
+             <li>Temperatura del núcleo: ~15 millones°C</li> 
+             <li>Edad: ~4.6 billones de años</li> 
+             <li>Composición: 74% hidrógeno, 24% helio, 2% elementos pesados</li> 
+         </ul> 
+ </div> 
+
+ <div id="mercury-info-popup" class="planet-info-popup">
+     <button class="close-planet-popup" data-planet="mercury">X</button>
+     <h2>Mercurio</h2>
+     <p>Mercurio es el planeta más pequeño y cercano al Sol. Su superficie está llena de cráteres, similar a la Luna, debido a su atmósfera casi inexistente.</p>
+     <p><strong>Características principales:</strong></p>
+     <ul>
+         <li>Diámetro: 4,879 km</li>
+         <li>Distancia al Sol: 57.9 millones km</li>
+         <li>Duración del día: 58.6 días terrestres</li>
+         <li>Temperatura superficial: -173°C (noche) a 427°C (día)</li>
+     </ul>
+ </div>
+
+ <div id="venus-info-popup" class="planet-info-popup">
+     <button class="close-planet-popup" data-planet="venus">X</button>
+     <h2>Venus</h2>
+     <p>Venus es el segundo planeta desde el Sol y es conocido por su atmósfera densa y tóxica, compuesta principalmente de dióxido de carbono, lo que crea un efecto invernadero extremo.</p>
+     <p><strong>Características principales:</strong></p>
+     <ul>
+         <li>Diámetro: 12,104 km</li>
+         <li>Distancia al Sol: 108.2 millones km</li>
+         <li>Temperatura superficial: ~462°C (el más caliente del sistema solar)</li>
+         <li>Duración del día: 243 días terrestres (gira en dirección opuesta)</li>
+     </ul>
+ </div>
+
+ <div id="mars-info-popup" class="planet-info-popup">
+     <button class="close-planet-popup" data-planet="mars">X</button>
+     <h2>Marte</h2>
+     <p>Marte, el "Planeta Rojo", tiene una atmósfera delgada y características superficiales que sugieren la presencia de agua líquida en el pasado. Es un objetivo clave para la exploración espacial.</p>
+     <p><strong>Características principales:</strong></p>
+     <ul>
+         <li>Diámetro: 6,779 km</li>
+         <li>Distancia al Sol: 227.9 millones km</li>
+         <li>Satélites naturales: Fobos y Deimos</li>
+         <li>Temperaturas: -140°C a 20°C</li>
+     </ul>
+ </div>
+
+ <div id="saturn-info-popup" class="planet-info-popup">
+     <button class="close-planet-popup" data-planet="saturn">X</button>
+     <h2>Saturno</h2>
+     <p>Saturno es un gigante gaseoso famoso por su extenso y complejo sistema de anillos, compuesto principalmente por partículas de hielo y roca. Es el segundo planeta más grande del sistema solar.</p>
+     <p><strong>Características principales:</strong></p>
+     <ul>
+         <li>Diámetro: 116,460 km (sin anillos)</li>
+         <li>Distancia al Sol: 1.4 billones km</li>
+         <li>Número de lunas: 83 (confirmadas)</li>
+         <li>Composición: Hidrógeno y helio</li>
+     </ul>
+ </div>
+
+ <div id="uranus-info-popup" class="planet-info-popup">
+     <button class="close-planet-popup" data-planet="uranus">X</button>
+     <h2>Urano</h2>
+     <p>Urano es un gigante de hielo con una atmósfera fría de metano que le da su tono azul-verde. Su característica más distintiva es su inclinación axial extrema, que lo hace "rodar" sobre su órbita.</p>
+     <p><strong>Características principales:</strong></p>
+     <ul>
+         <li>Diámetro: 50,724 km</li>
+         <li>Distancia al Sol: 2.9 billones km</li>
+         <li>Número de lunas: 27</li>
+         <li>Rotación: Gira casi de lado</li>
+     </ul>
+ </div>
+
+ <div id="neptune-info-popup" class="planet-info-popup">
+     <button class="close-planet-popup" data-planet="neptune">X</button>
+     <h2>Neptuno</h2>
+     <p>Neptuno es el planeta más lejano del Sol y el más denso de los gigantes gaseosos. Es conocido por sus vientos extremadamente rápidos y su color azul intenso, atribuido al metano atmosférico.</p>
+     <p><strong>Características principales:</strong></p>
+     <ul>
+         <li>Diámetro: 49,244 km</li>
+         <li>Distancia al Sol: 4.5 billones km</li>
+         <li>Número de lunas: 14</li>
+         <li>Vientos: Los más rápidos del sistema solar</li>
+     </ul>
+ </div>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script> 
+      
+     <script src="js/visualizador.js"></script> 
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+ </body> 
+ </html>

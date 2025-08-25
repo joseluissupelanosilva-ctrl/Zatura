@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calendario</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/Calendario.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <audio id="interestelar" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5be751f67d.mp3?filename=space-ambience-version-2-2-176437.mp3" type="audio/mpeg">
+    </audio>
+
+    <header class="header">
+        <div class="header-container">
+            <button class="menu-btn">
+                <img src="imagenes/LogoFinal.png" alt="Menú">
+            </button>
+            
+            <div class="logo">
+                
+                <h1>CALENDARIO</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav-links">
+        <ul>
+            <li><a href="Zatura.html"><ion-icon name="person-circle-outline"></ion-icon>Zatura</a></li>
+            <li><a href="ZaturaIA.html"><ion-icon name="chatbubble-ellipses-outline"></ion-icon>Zatura IA</a></li>
+            <li><a href="Visualizador.html"><ion-icon name="planet-outline"></ion-icon>Visualizador 3D</a></li>
+            <li><a href="Peso.html"><ion-icon name="barbell-outline"></ion-icon>Tu Peso en Otros Planetas</a></li>
+            <li><a href="Calendario.html"><ion-icon name="calendar-outline"></ion-icon>Calendario Astronómico</a></li>
+            <li><a href="interfaz.html"><ion-icon name="game-controller-outline"></ion-icon>Juegos Espaciales</a></li>
+            <li><a href="Integrantes.html"><ion-icon name="people-outline"></ion-icon>Créditos</a></li>
+            <li><a href="AcercaDe.html"><ion-icon name="information-circle-outline"></ion-icon>Acerca De</a></li>
+            
+        </ul>
+    </div>
+    <div class="overlay"></div>
+
+    <div class="stars" id="stars"></div>
+    <div class="particles" id="particles"></div>
+    <div class="main-title"></div>
+
+    <main class="container" role="main" aria-label="Calendario de la galaxia con eventos astronómicos">
+        <header>
+            <div class="month" aria-live="polite">Cargando...<span class="year-display">2025</span></div>
+            <nav class="nav-buttons" aria-label="Navegación de meses">
+                <button type="button" id="prevMonth" aria-label="Mes anterior">&lt;</button>
+                <button type="button" id="nextMonth" aria-label="Mes siguiente">&gt;</button>
+            </nav>
+        </header>
+
+        <section class="calendar-grid" aria-label="Días de la semana y fechas"></section>
+        
+        <div class="footer-info">
+            ✦ Haz clic en los días marcados para obtener más información sobre los eventos astronómicos ✦
+        </div>
+    </main>
+
+    <aside class="special-dates-container" aria-label="Listado de eventos astronómicos">
+        <div class="events-section">
+            <h2>Eventos del Mes</h2>
+            <div class="events-scroll-container">
+                <ul id="currentMonthEventsList">
+                    <li class="no-dates-message">Selecciona un mes para ver sus eventos</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="events-section">
+            <h2>Todos los Eventos 2025</h2>
+            <div class="events-scroll-container">
+                <ul id="allEventsList"></ul>
+            </div>
+        </div>
+    </aside>
+
+    <div class="audio-controls">
+        <button class="audio-btn" id="audioToggle" aria-label="Reproducir/Pausar audio">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+
+    <div class="theme-toggle">
+        <button class="theme-btn" id="themeToggle" aria-label="Cambiar tema">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="js/Calendario.js"></script>
+</body>
+</html>

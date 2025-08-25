@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Juegos</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/interfaz.css">
+    <link rel="icon" href="imagenes/LogoFinal.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <audio id="interestelar" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5be751f67d.mp3?filename=space-ambience-version-2-2-176437.mp3" type="audio/mpeg">
+    </audio>
+
+    <header class="header">
+        <button class="menu-btn">
+            <img src="imagenes/LogoFinal.png" alt="Menú">
+        </button>
+        <div class="logo">
+            <img src="imagenes/LogoFinal.png" alt="Logo Zatura">
+            <h1>JUEGOS</h1>
+        </div>
+    </header>
+
+    <div class="nav-links">
+        <ul>
+            <li><a href="Zatura.html"><ion-icon name="person-circle-outline"></ion-icon>Inicio</a></li>
+            <li><a href="ZaturaIA.html"><ion-icon name="chatbubble-ellipses-outline"></ion-icon>Zatura IA</a></li>
+            <li><a href="Visualizador.html"><ion-icon name="planet-outline"></ion-icon>Visualizador 3D</a></li>
+            <li><a href="Peso.html"><ion-icon name="barbell-outline"></ion-icon>Tu Peso en Otros Planetas</a></li>
+            <li><a href="Calendario.html"><ion-icon name="calendar-outline"></ion-icon>Calendario Astronómico</a></li>
+            <li><a href="interfaz.html"><ion-icon name="game-controller-outline"></ion-icon>Juegos Espaciales</a></li>
+            <li><a href="Integrantes.html"><ion-icon name="people-outline"></ion-icon>Créditos</a></li>
+            <li><a href="AcercaDe.html"><ion-icon name="information-circle-outline"></ion-icon>Acerca De</a></li>
+    </div>
+    <div class="overlay"></div>
+
+    <div class="game-menu-container">
+        <div class="buttons-wrapper">
+            <a href="constelacion.html" class="game-button">
+                <span class="button-text">Conecta la Constelacion</span>
+                <span class="button-icon">🎮</span>
+            </a>
+            <a href="quiz.html" class="game-button">
+                <span class="button-text">Objetos celestes</span>
+                <span class="button-icon">🧠</span>
+            </a>
+            <a href="aterrizaje.html" class="game-button">
+                <span class="button-text">Aterrizaje</span>
+                <span class="button-icon">🚀</span>
+            </a>
+        </div>
+    </div>
+    
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="js/interfaz.js"></script>
+</body>
+</html>
