@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zatura - Pantalla Principal</title>
+    <link rel="stylesheet" href="../Zatura/css/Zatura.css" />
+    <link rel="icon" type="image/x-icon" href="../Zatura/imagenes/LogoFinal.png" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        /* Estilos adicionales para el header centrado y degradado */
+        .header .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px; /* Aseguramos altura consistente */
+        }
+        
+        .btn-menu {
+            position: absolute;
+            left: 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px; /* Espacio entre logo y texto */
+        }
+        
+        .logo img {
+            height: 50px; /* Aumentamos el tamaño de la imagen (era 40px) */
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo img:hover {
+            transform: scale(1.05); /* Efecto sutil al pasar el mouse */
+        }
+        
+        .logo h1 {
+            background: linear-gradient(45deg, #5a9cf8, #8e44ad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 600;
+            font-size: 1.8rem; /* Tamaño de fuente ligeramente mayor */
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        
+        /* Ajustes responsivos */
+        @media (max-width: 768px) {
+            .logo img {
+                height: 45px; /* Tamaño ligeramente menor en móviles */
+            }
+            
+            .logo h1 {
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo img {
+                height: 40px;
+            }
+            
+            .logo h1 {
+                font-size: 1.4rem;
+            }
+            
+            .logo {
+                gap: 8px;
+            }
+        }
+
+        /* Botón de menú estilo Menú.php */
+        .menu-btn {
+            cursor: pointer;
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1100;
+            width: 60px;
+            height: 60px;
+            transition: all 0.3s ease;
+            background: transparent;
+            border: none;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .menu-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(90, 156, 248, 0) 0%,
+                rgba(90, 156, 248, 0) 45%,
+                rgba(90, 156, 248, 0.2) 50%,
+                rgba(90, 156, 248, 0) 55%,
+                rgba(90, 156, 248, 0) 100%
+            );
+            transform: rotate(30deg);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .menu-btn:hover::before {
+            opacity: 1;
+            animation: shine 1.5s infinite;
+        }
+        
+        .menu-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-btn:hover img {
+            transform: scale(0.9);
+            filter: drop-shadow(1px 1px 3px #5a9cf8);
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-30%, -30%); }
+            100% { transform: rotate(30deg) translate(30%, 30%); }
+        }
+        
+        /* Menú desplegable estilo Menú.php - RESPONSIVE MEJORADO */
+        .nav-links {
+            position: fixed;
+            left: -100%;
+            top: 80px;
+            height: calc(100vh - 80px);
+            width: 85%;
+            max-width: 320px;
+            background: #006682;
+            background: -webkit-linear-gradient(45deg, rgba(0, 102, 130, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 23, 30, 1) 75%, rgba(0, 102, 130, 1) 100%);
+            background: -moz-linear-gradient(45deg, rgba(0, 102, 130, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 23, 30, 1) 75%, rgba(0, 102, 130, 1) 100%);
+            background: linear-gradient(45deg, rgba(0, 102, 130, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 23, 30, 1) 75%, rgba(0, 102, 130, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#006682", endColorstr="#006682", GradientType=0);
+            transition: left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 999;
+            padding: 1.5rem 0;
+            overflow-y: auto;
+            border-right: 1px solid rgba(61, 47, 0, 0.2);
+            -webkit-overflow-scrolling: touch; /* Mejor scroll en dispositivos táctiles */
+        }
+        
+        .nav-links.active {
+            left: 0;
+            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .nav-links ul {
+            list-style: none;
+            padding: 0 1rem;
+            margin: 0;
+        }
+        
+        .nav-links li {
+            margin-bottom: 0.1rem;
+            background-color: transparent;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .nav-links li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(90, 156, 248, 0.1), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .nav-links li:hover::before {
+            left: 100%;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #d0d0d0;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #5a9cf8;
+            transform: translateX(5px);
+        }
+        
+        .nav-links li:hover {
+            background-color: rgba(10, 10, 10, 0.6);
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        ion-icon {
+            color: #8ed2ff;
+            transition: all 0.3s ease;
+            font-size: 1.4rem;
+            min-width: 24px;
+        }
+        
+        .nav-links a:hover ion-icon {
+            color: #5a9cf8;
+            transform: scale(1.1);
+        }
+        
+        /* Mejoras responsive para el menú */
+        @media (max-width: 1024px) {
+            .nav-links {
+                width: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                width: 280px;
+                padding: 1.25rem 0;
+            }
+            
+            .nav-links a {
+                padding: 0.9rem;
+                font-size: 0.95rem;
+            }
+            
+            .menu-btn {
+                width: 55px;
+                height: 55px;
+                left: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links {
+                width: 85%;
+                max-width: 270px;
+                padding: 1rem 0;
+            }
+            
+            .nav-links a {
+                padding: 0.85rem 0.75rem;
+                font-size: 0.9rem;
+                gap: 0.85rem;
+            }
+            
+            .menu-btn {
+                width: 50px;
+                height: 50px;
+                left: 0.5rem;
+            }
+            
+            ion-icon {
+                font-size: 1.3rem;
+            }
+            
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .nav-links {
+                width: 90%;
+                max-width: none;
+            }
+            
+            .nav-links a {
+                padding: 0.8rem 0.6rem;
+                font-size: 0.85rem;
+            }
+            
+            .menu-btn {
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        /* Prevenir scroll cuando el menú está abierto */
+        body.menu-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <video id="background-video" autoplay loop muted playsinline>
+        <source src="imagenes/video de la luna.mp4" type="video/mp4">
+    </video>
+
+    <div class="capa"></div>
+
+    <header class="header">
+        <div class="container">
+            <button class="menu-btn">
+                <img src="imagenes/LogoFinal.png" alt="Menú">
+            </button>
+            <div class="logo">
+                <img src="imagenes/LogoFinal.png" alt="Logo Zatura">
+                <h1>ZATURA</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav-links">
+        <ul>
+            <li>
+                <a href="Zatura.html">
+                    <ion-icon name="person-circle-outline"></ion-icon>Inicio</a>
+            </li>
+            <li>
+                <a href="ZaturaIA.html">
+                    <ion-icon name="chatbubble-ellipses-outline"></ion-icon>Zatura IA</a>
+            </li>
+            <li>
+                <a href="Visualizador.html">
+                    <ion-icon name="planet-outline"></ion-icon>Visualizador 3D</a>
+            </li>
+            <li>
+                <a href="Peso.html">
+                    <ion-icon name="barbell-outline"></ion-icon>Tu Peso en Otros Planetas</a>
+            </li>
+            <li>
+                <a href="Calendario.html">
+                    <ion-icon name="calendar-outline"></ion-icon>Calendario Astronómico</a>
+            </li>
+            <li>
+                <a href="interfaz.html">
+                    <ion-icon name="game-controller-outline"></ion-icon>Juegos Espaciales</a>
+            </li>
+            <li>
+                <a href="Integrantes.html">
+                    <ion-icon name="people-outline"></ion-icon>Créditos</a>
+            </li>
+            <li>
+                <a href="AcercaDe.html">
+                    <ion-icon name="information-circle-outline"></ion-icon>Acerca De</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="overlay"></div>
+    
+    <main>
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Explora los misterios del Universo</h2>
+            <p>Zatura te lleva en un viaje intergaláctico para descubrir los secretos del cosmos</p>
+        </div>
+        <div class="hero-image">
+            <img src="../Zatura/imagenes/ton618.png" alt="Astronauta en el espacio">
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-rocket"></i>
+            <h3>Visualizador 3D</h3>
+            <p>Explora planetas y el sistema solar en impresionante 3D</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-robot"></i>
+            <h3>Zatura IA</h3>
+            <p>Asistente inteligente para tus consultas astronómicas</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-gamepad"></i>
+            <h3>Juegos Espaciales</h3>
+            <p>Diviértete con nuestros minijuegos temáticos</p>
+        </div>
+    </section>
+
+    </main>
+    
+    <script src="../Zatura/js/Zatura.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.querySelector('.menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            const overlay = document.querySelector('.overlay');
+            const body = document.body;
+            
+            // Manejar menú desplegable
+            menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navLinks.classList.toggle('active');
+                overlay.classList.toggle('active');
+                body.classList.toggle('menu-open');
+            });
+            
+            const closeMenu = () => {
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+                body.classList.remove('menu-open');
+            };
+            
+            overlay.addEventListener('click', closeMenu);
+            
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+            
+            // Cerrar menú al hacer clic fuera o con la tecla Escape
+            document.addEventListener('click', (e) => {
+                if (navLinks.classList.contains('active') && 
+                    !navLinks.contains(e.target) && 
+                    !menuBtn.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
